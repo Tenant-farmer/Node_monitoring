@@ -16,14 +16,33 @@ if ! command -v screen &> /dev/null; then
     apt install -y screen
 fi
 
+# Install python3-venv
+echo "Installing python3-venv..."
+apt install -y python3-venv
+
 # Step 2: Create and activate virtual environment
 echo "[2/3] Setting up Python virtual environment..."
 python3 -m venv venv
-source venv/bin/activate
+. ./venv/bin/activate
+
+if [ $? -ne 0 ]; then
+    echo "Failed to create virtual environment. Please try manually:"
+    echo "1. apt install python3-venv"
+    echo "2. python3 -m venv venv"
+    echo "3. source venv/bin/activate"
+    exit 1
+fi
 
 # Step 3: Install Python packages
 echo "Installing required Python packages..."
-pip install -r requirements.txt
+./venv/bin/pip install -r requirements.txt
+
+if [ $? -ne 0 ]; then
+    echo "Failed to install packages. Please try manually:"
+    echo "1. source venv/bin/activate"
+    echo "2. pip install -r requirements.txt"
+    exit 1
+fi
 
 # Step 4: Create config file
 echo "[3/3] Setting up configuration..."
@@ -44,8 +63,8 @@ EOF
 echo ""
 echo "Installation completed!"
 echo ""
-echo "Next steps:"
-echo "1. Add your Telegram user ID to ALLOWED_USERS in config.py"
-echo "2. Run the bot: python3 monitor.py"
+echo "To run the bot:"
+echo "1. source venv/bin/activate"
+echo "2. python3 monitor.py"
 echo ""
 echo "To get your Telegram ID, send a message to @userinfobot" 
