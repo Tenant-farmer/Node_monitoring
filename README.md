@@ -1,2 +1,13 @@
-# Node_monitoring
-Telegram bot for monitoring Cysic node status and logs in real-time
+echo '# Cysic Node Monitor Bot
+
+텔레그램 봇을 통해 Cysic 노드의 상태를 모니터링하는 도구입니다.
+
+## 기능
+- 실시간 노드 상태 모니터링
+- 문제가 있는 노드 자동 감지
+- 노드별 최근 로그 확인
+- 전체 노드 상태 요약
+
+## 설치 방법
+
+1. 저장소 클론

@@ -1,0 +1,3 @@
+python-telegram-bot>=21.0.0
+psutil>=5.9.0
+nest-asyncio>=1.5.6
